@@ -1,15 +1,20 @@
-# Ecommerce FrontEnd
+# Authentication app
 
-> Mobile platform
+> Mobile authentication form
+
 
 ## Description
-**ENG:** ...
 
-**ESP:** El proyecto "Ecommerce" es una aplicación móvil que muestra un catálogo de artículos de venta. Como un ecommerce tradicional, permite la visualización, compra, etc., de los productos. También cuenta con un carrito de compras para poder realizar la selección de más de un producto, a la vez.
+**ENG:** The application is a registration and login system, using React Hook Form for Front End validations and Supabase for the Back End.
+The purpose of this application is to practice and master user authentication from a mobile device, with a primary focus on the Front End.
 
-La aplicación móvil solo muestra la vista de los usuarios que son clientes. Por lo tanto, un administrador no puede acceder a las funcionalidades de crear, editar, etc., un producto. Estas funciones las podrá realizar dentro de la página web.
+> Note: It is important to emphasize that the application does have a Back End; however, this is not the main focus, so the priority will be the Front End.
 
-De igual manera, los usuarios clientes no pueden acceder a las funciones de compra, etc., dentro de la página web.
+**ESP:** La aplicación es un registro e inicio de sesión, utilizando React Hook Form para las validaciones del Front End y Supabase para el Back End.
+El objetivo de esta aplicación es practicar y dominar la autenticación de usuarios desde un dispositivo móvil, enfocado principalmente en el Front End.
+
+> Nota: Es necesario recalcar que la aplicación cuenta con un Back End; sin embargo, este no es el objetivo principal, por lo que la prioridad será el Front End.
+
 
 ## How to install and run
 
