@@ -1,19 +1,27 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 import React from 'react';
-import { View, Text } from 'react-native';
 
 import { SignInScreen, SignUpScreen } from '../screens';
 
 
-const Stack = createStackNavigator();
+export type RootStackParams = {
+  SignIn: undefined,
+  SignUp: undefined,
+}
+
+const Stack = createStackNavigator<RootStackParams>();
 
 
 const Navigator = () => {
   return (
     <Stack.Navigator initialRouteName='SignIn'>
-      <Stack.Screen name="SignIn" component={ SignInScreen } />
-      <Stack.Screen name="SignUp" component={ SignUpScreen } />
+      <Stack.Screen name="SignIn" component={ SignInScreen } options={{
+        headerShown: false
+      }}/>
+      <Stack.Screen name="SignUp" component={ SignUpScreen } options={{
+        headerShown: false
+      }} />
     </Stack.Navigator>
   );
 }

@@ -1,11 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+
+import type { RootStackParams } from '../../navigator/Navigator';
 
 
 const SignInScreen = () => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
   return (
     <View style={ styles.container }>
@@ -15,7 +17,7 @@ const SignInScreen = () => {
         onPress={ () => navigation.navigate('SignUp') }
         style={ styles.button }
       >
-        <Text style={{ color: 'white' }} >Sign Up</Text>
+        <Text style={{ color: 'white' }}>Sign Up</Text>
       </Pressable>
     </View>
   );
