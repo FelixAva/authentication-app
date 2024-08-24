@@ -1,8 +1,8 @@
 // SignIn imports
-import SignInScreen from './SignIn/SignInScreen';
+import SignInScreen from './signIn/SignInScreen';
 
 // SignUp imports
-import SignUpScreen from './SignUp/SignUpScreen';
+import SignUpScreen from './signUp/SignUpScreen';
 
 
 
