@@ -1,10 +1,14 @@
+import { Stack } from 'expo-router';
 import React from 'react';
-import { View, Text } from 'react-native';
 
 export default function SignUpLayout() {
   return (
-    <View>
-      <Text>SignUpLayout</Text>
-    </View>
+    <Stack
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <Stack.Screen name='index' />
+    </Stack>
   );
 }
