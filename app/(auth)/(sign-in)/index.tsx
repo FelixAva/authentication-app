@@ -6,7 +6,6 @@ import { globalStyles } from '../../../constants';
 export default function SignIn() {
   return (
     <View style={ styles.container }>
-      <Text>SignIn</Text>
       <Link
         label="Don't you have an account?"
         route='sign-up'
