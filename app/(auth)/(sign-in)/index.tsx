@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Link } from '../../../components';
+import { globalStyles } from '../../../constants';
 
 export default function SignIn() {
   return (
-    <View>
+    <View style={ styles.container }>
       <Text>SignIn</Text>
       <Link
         label="Don't you have an account?"
@@ -13,3 +14,11 @@ export default function SignIn() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    ...globalStyles.container,
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
+  }
+});
