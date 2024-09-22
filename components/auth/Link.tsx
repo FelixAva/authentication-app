@@ -1,4 +1,4 @@
-import { Router } from 'expo-router';
+import { router } from 'expo-router';
 import React from 'react';
 import {
   Pressable,
@@ -7,14 +7,14 @@ import {
 
 interface Props {
   label: string;
-  screen: string;
+  route: 'sign-in' | 'sign-up';
 }
 
-export default function Link( {label, screen }: Props ) {
+export default function Link( {label, route }: Props ) {
   return (
-    <Pressable onPress={ () => { console.log('Go to ' + screen) } }>
+    <Pressable onPress={ () => router.replace(`/(${ route })`) }>
       <Text>
-        { label } <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>{ screen }</Text>
+        { label } <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>{ route === 'sign-in' ? 'Sign In' : 'Sign Up' }</Text>
       </Text>
     </Pressable>
   );
