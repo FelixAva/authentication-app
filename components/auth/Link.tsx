@@ -10,7 +10,7 @@ interface Props {
   route: 'sign-in' | 'sign-up';
 }
 
-export default function Link( {label, route }: Props ) {
+export default function Link( { label, route }: Props ) {
   return (
     <Pressable onPress={ () => router.replace(`/(${ route })`) }>
       <Text>
