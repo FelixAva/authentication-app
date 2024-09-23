@@ -14,17 +14,22 @@ import { Button, FormContainer, InputText, Link } from '../../../components';
 
 export default function SignUp() {
 
-  const [key, setKey] = useState( false );
+  const [isKbordActive, setIsKbordActive] = useState( false );
 
-  Keyboard.addListener('keyboardDidShow', () => setKey(true) );
-  Keyboard.addListener('keyboardDidHide', () => setKey(false) );
+  Keyboard.addListener('keyboardDidShow', () => setIsKbordActive( true ) );
+  Keyboard.addListener('keyboardDidHide', () => setIsKbordActive( false ) );
 
   return (
-    <KeyboardAvoidingView style={ styles.container }
+    <KeyboardAvoidingView
       behavior='position'
+      style={ styles.container }
     >
-      <TouchableWithoutFeedback onPress={ Platform.OS === 'web' ? null : Keyboard.dismiss } style={ [styles.content] }>
-        <ScrollView contentContainerStyle={[ styles.content, key ? { flex: 0 } : { flex: 1 } ]}>
+      <TouchableWithoutFeedback
+        onPress={ Platform.OS === 'web' ? null : Keyboard.dismiss }
+      >
+        <ScrollView
+          contentContainerStyle={[ styles.content, isKbordActive ? { flex: 0 } : { flex: 1 } ]}
+        >
           <FormContainer>
             <InputText
               label='First name'
@@ -75,7 +80,6 @@ const styles = StyleSheet.create({
   container: {
     ...globalStyles.container,
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   content: {
     alignItems: 'center',
