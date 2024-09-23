@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
 import { useForm, Controller } from 'react-hook-form';
 
 import { globalStyles } from '../../../constants';
-import { Link, InputText, FormContainer, Button } from '../../../components';
+import {
+  Link,
+  InputText,
+  FormContainer,
+  Button
+} from '../../../components';
 
 export default function SignIn() {
 
@@ -31,6 +35,10 @@ export default function SignIn() {
             required: {
               value: true,
               message: 'This field is required'
+            },
+            maxLength: {
+              value: 12,
+              message: 'Max length is 12'
             }
           }}
           render={({ field: { onChange, onBlur, value } }) => (
