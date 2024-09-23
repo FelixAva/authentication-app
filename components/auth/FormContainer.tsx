@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from '../../constants';
 
 interface Props {
   children: ReactNode;
