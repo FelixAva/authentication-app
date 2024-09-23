@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -14,17 +14,17 @@ import { Button, FormContainer, InputText, Link } from '../../../components';
 
 export default function SignUp() {
 
-  const isKeyboardActive = useRef( false );
+  const [key, setKey] = useState( false );
 
-  Keyboard.addListener('keyboardDidShow', () => isKeyboardActive.current = true );
-  Keyboard.addListener('keyboardDidHide', () => isKeyboardActive.current = false );
+  Keyboard.addListener('keyboardDidShow', () => setKey(true) );
+  Keyboard.addListener('keyboardDidHide', () => setKey(false) );
 
   return (
     <KeyboardAvoidingView style={ styles.container }
       behavior='position'
     >
-      <TouchableWithoutFeedback onPress={ Platform.OS === 'web' ? null : Keyboard.dismiss } style={{ flex:1 }}>
-        <ScrollView contentContainerStyle={[ styles.content, isKeyboardActive ? { flex: 0 } : { flex: 1 } ]}>
+      <TouchableWithoutFeedback onPress={ Platform.OS === 'web' ? null : Keyboard.dismiss } style={ [styles.content] }>
+        <ScrollView contentContainerStyle={[ styles.content, key ? { flex: 0 } : { flex: 1 } ]}>
           <FormContainer>
             <InputText
               label='First name'
