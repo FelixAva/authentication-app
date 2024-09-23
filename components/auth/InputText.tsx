@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, TextInput, TextInputProps } from 'react-native';
+import { View, Text, TextInput, TextInputProps, StyleSheet } from 'react-native';
+import { Colors } from '../../constants';
 
 interface Props {
   label: string;
-  placeholder: string;
-
   error?: string;
   required?: boolean;
 
@@ -13,21 +12,52 @@ interface Props {
 
 export default function InputText( {
   label,
-  placeholder,
   error,
   required,
+
   inputProps
 }: Props ) {
+
+  const capitalize = ( text: string ): string => text[0].toUpperCase() + text.substring(1);
+
   return (
-    <View>
-      <Text>{ label } { required && '*'  }</Text>
+    <View style={{ gap: 10 }}>
+      <Text
+        style={ styles.label }
+      >{ label } { required && '*'  }</Text>
 
       <TextInput
         { ...inputProps }
-        placeholder={ placeholder }
+        style={ styles.input }
       />
 
-      <Text>{ error }</Text>
+      {
+        error &&
+        <Text style={ styles.error }>
+          { capitalize( error ) }
+        </Text>
+      }
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  label: {
+    fontSize: 22,
+    color: Colors.black
+  },
+  input: {
+    width: 350,
+    height: 50,
+    paddingLeft: 10,
+    fontSize: 18,
+    borderRadius: 5,
+    borderWidth: 1,
+
+    color: '#4f4f4f'
+  },
+  error: {
+    fontSize: 16,
+    color: Colors.warning
+  }
+});
