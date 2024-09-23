@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TextInputProps, StyleSheet } from 'react-native';
+
 import { Colors } from '../../constants';
 
 interface Props {
@@ -24,7 +25,9 @@ export default function InputText( {
     <View style={{ gap: 10 }}>
       <Text
         style={ styles.label }
-      >{ label } { required && '*'  }</Text>
+      >
+        { label } { required && '*'  }
+      </Text>
 
       <TextInput
         { ...inputProps }
