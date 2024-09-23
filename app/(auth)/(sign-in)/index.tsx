@@ -8,9 +8,16 @@ export default function SignIn() {
   return (
     <View style={ styles.container }>
       <InputText
-        label='First name'
+        label='User'
         inputProps={{
-          placeholder: 'Type your first name'
+          placeholder: 'Type your user name'
+        }}
+      />
+
+      <InputText
+        label='Password'
+        inputProps={{
+          placeholder: 'Type your password'
         }}
       />
 
