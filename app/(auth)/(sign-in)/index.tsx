@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { globalStyles } from '../../../constants';
-import { Link, InputText, FormContainer } from '../../../components';
+import { Link, InputText, FormContainer, Button } from '../../../components';
 
 export default function SignIn() {
   return (
@@ -21,6 +21,12 @@ export default function SignIn() {
           inputProps={{
             placeholder: 'Type your password'
           }}
+        />
+
+        <Button
+          title='Sign In'
+          action={ () => console.log('Sign In') }
+          customStyles={{ width: 350 }}
         />
       </FormContainer>
 
