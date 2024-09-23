@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 
-import { globalStyles } from '../../../constants';
 import {
   Link,
   InputText,
   FormContainer,
-  Button
+  Button,
+  ContentSafeArea
 } from '../../../components';
 
 export default function SignIn() {
@@ -26,8 +25,7 @@ export default function SignIn() {
   const onSubmit = ( data ) => console.log(data);
 
   return (
-    <View style={ styles.container }>
-
+    <ContentSafeArea>
       <FormContainer>
         <Controller
           control={ control }
@@ -98,14 +96,6 @@ export default function SignIn() {
         label="Don't you have an account?"
         route='sign-up'
       />
-    </View>
+    </ContentSafeArea>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    ...globalStyles.container,
-    alignItems: 'center',
-    justifyContent: 'space-evenly'
-  }
-});
