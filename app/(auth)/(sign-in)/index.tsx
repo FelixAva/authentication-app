@@ -1,10 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import { useForm, Controller } from 'react-hook-form';
+
 import { globalStyles } from '../../../constants';
 import { Link, InputText, FormContainer, Button } from '../../../components';
 
 export default function SignIn() {
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      user: "",
+      password: "",
+    }
+  });
+
+  const onSubmit = ( data ) => console.log(data);
+
   return (
     <View style={ styles.container }>
 
