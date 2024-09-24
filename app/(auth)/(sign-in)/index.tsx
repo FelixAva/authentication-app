@@ -9,6 +9,10 @@ import {
   ContentSafeArea
 } from '../../../components';
 
+import { signin } from '../../../api/authService';
+
+import { User } from '../../../interfaces/user';
+
 export default function SignIn() {
 
   const {
@@ -17,12 +21,14 @@ export default function SignIn() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      user: "",
+      userName: "",
       password: "",
     }
   });
 
-  const onSubmit = ( data ) => console.log(data);
+  const onSubmit = ( data: User ): void => {
+    console.log(signin( data ));
+  };
 
   return (
     <ContentSafeArea>
@@ -48,10 +54,10 @@ export default function SignIn() {
                 onChange: onChange,
                 value: value
               }}
-              error={ errors.user?.message }
+              error={ errors.userName?.message }
             />
           )}
-          name='user'
+          name='userName'
         />
 
         <Controller
@@ -87,7 +93,9 @@ export default function SignIn() {
 
         <Button
           title='Sign In'
-          action={ handleSubmit( onSubmit ) }
+          action={
+            handleSubmit( ( data: User ) => onSubmit( data ) )
+          }
           customStyles={{ width: 350 }}
         />
       </FormContainer>
