@@ -19,7 +19,7 @@ export default function AppLayout() {
     }, 1000 );
   }, [])
 
-  if ( isLoading ) return <ScreenLoading />;
+  if ( isLoading ) return <ScreenLoading screenName='Home' />;
 
   if ( !token ) return <Redirect href='/(auth)/' />
 

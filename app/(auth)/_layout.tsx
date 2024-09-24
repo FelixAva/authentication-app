@@ -19,7 +19,7 @@ export default function AuthLayout() {
     }, 1000 );
   }, [])
 
-  if ( isLoading ) return <ScreenLoading />;
+  if ( isLoading ) return <ScreenLoading screenName='Authentication' />;
 
   if ( token ) return <Redirect href='/(app)/' />
 
