@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet
+} from 'react-native';
 
 export default function ScreenLoading() {
   return (
     <View style={ styles.container }>
-      <Text>Loading...</Text>
+      <Text style={ styles.loading }>Loading...</Text>
 
-      <ActivityIndicator size='large' style={{ marginTop: 15 }} />
+      <ActivityIndicator size={ 80 } style={{ marginTop: 20 }} />
     </View>
   );
 }
@@ -16,5 +21,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  loading: {
+    fontSize: 26
   }
 });
