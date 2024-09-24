@@ -1,8 +1,22 @@
 import { Stack } from 'expo-router';
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+
+import { ScreenLoading } from '../../components';
 
 export default function AuthLayout() {
+
+  const [isLoading, setIsLoading] = useState<boolean>( false );
+
+  useEffect(() => {
+    setIsLoading( true );
+
+    setTimeout(() => {
+      setIsLoading( false );
+    }, 1000 );
+  }, [])
+
+  if ( isLoading ) return <ScreenLoading />;
+
   return (
     <Stack
       screenOptions={{
