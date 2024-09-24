@@ -9,6 +9,10 @@ import {
   Link
 } from '../../../components';
 
+import { useAuth } from '../../../hooks';
+
+import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
+
 export default function SignUp() {
 
   const {
@@ -18,14 +22,27 @@ export default function SignUp() {
     formState: { errors }
   } = useForm({
     defaultValues: {
-      firstName: '',
-      secondName: '',
+      userName: '',
       password: '',
       confirmPassword: '',
     }
   });
 
-  const onSubmit = (data) => console.log(data);
+  const {
+    // Properties
+    loading,
+    data,
+    error,
+
+    // Methods
+    signUp
+  } = useAuth();
+
+  const onSubmit = async ( data: User ) => {
+    const res = signUp( data );
+
+    console.log(res);
+  };
 
   return (
     <ContentSafeArea>
@@ -44,44 +61,17 @@ export default function SignUp() {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <InputText
-              label='First name'
+              label='User'
               inputProps={{
-                placeholder: 'Type your first name',
+                placeholder: 'Type an user name',
                 onChange: onChange,
                 onBlur: onBlur,
                 value: value
               }}
-              error={ errors.firstName?.message }
+              error={ errors.userName?.message }
             />
           )}
-          name='firstName'
-        />
-
-        <Controller
-          control={ control }
-          rules={{
-            required: {
-              value: true,
-              message: 'This field is required'
-            },
-            maxLength: {
-              value: 12,
-              message: 'Max length is 12'
-            }
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <InputText
-              label='Second name'
-              inputProps={{
-                placeholder: 'Type your second name',
-                onChange: onChange,
-                onBlur: onBlur,
-                value: value
-              }}
-              error={ errors.secondName?.message }
-            />
-          )}
-          name='secondName'
+          name='userName'
         />
 
         <Controller
@@ -141,7 +131,9 @@ export default function SignUp() {
 
         <Button
           title='Sign Up'
-          action={ handleSubmit( onSubmit ) }
+          action={
+            handleSubmit( ( data: User ) => onSubmit( data ) )
+          }
           customStyles={{ width: 350 }}
         />
       </FormContainer>
