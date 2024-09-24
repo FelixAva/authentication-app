@@ -1,17 +1,22 @@
 import ApiManager from './ApiManager';
 
-export const signin = async data => {
+interface User {
+  userName: string;
+  password: string;
+}
+
+export const signin = async ( user: User ) => {
   try {
     const response = await ApiManager('/auth/login/', {
       method: "POST",
       headers: {
         'Content-Type': "application/json"
       },
-      data: data
+      data: user
     });
 
-    return response;
+    return response.data;
   } catch ( error ) {
-    throw new Error;
+    throw error;
   }
 };
