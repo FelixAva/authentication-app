@@ -12,6 +12,7 @@ import {
 import { signin } from '../../../api/authService';
 
 import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
+import { ActivityIndicator } from 'react-native';
 
 export default function SignIn() {
 
@@ -93,13 +94,20 @@ export default function SignIn() {
           name='password'
         />
 
-        <Button
-          title='Sign In'
-          action={
-            handleSubmit( ( data: User ) => onSubmit( data ) )
-          }
-          customStyles={{ width: 350 }}
-        />
+        {
+          false
+          ? <ActivityIndicator size='small' />
+          : (
+            <Button
+              title='Sign In'
+              action={
+                handleSubmit( ( data: User ) => onSubmit( data ) )
+              }
+              customStyles={{ width: 350 }}
+            />
+          )
+        }
+
       </FormContainer>
 
       <Link
