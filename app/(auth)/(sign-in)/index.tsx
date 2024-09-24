@@ -12,6 +12,8 @@ import {
 } from '../../../components';
 
 import { useAuth } from '../../../hooks';
+import useUserStore from '../../../store/useStore';
+
 import {
   User,
   UserDBResponse as UserDB
@@ -42,10 +44,22 @@ export default function SignIn() {
     signIn
   } = useAuth();
 
-  const onSubmit = async ( user: User ): Promise<void> => {
-    const res = await signIn( user );
+  const {
+    updateToken,
+    updateUser
+  } = useUserStore();
 
-    res && console.log('Logged in User:', res);
+  const storeUserData = ( user: UserDB ) => {
+    updateToken( user.token );
+    updateUser( user.user );
+  }
+
+  const onSubmit = async ( user: User ): Promise<void> => {
+    const res: UserDB = await signIn( user );
+
+    if ( res ) {
+      storeUserData( res );
+    }
   };
 
   return (

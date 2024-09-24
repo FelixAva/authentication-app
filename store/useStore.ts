@@ -33,3 +33,5 @@ const useUserStore = create<State & Action>( (set) => ({
     user: undefined
   }))
 }));
+
+export default useUserStore;
