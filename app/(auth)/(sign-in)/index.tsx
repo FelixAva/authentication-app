@@ -29,8 +29,8 @@ export default function SignIn() {
 
   const onSubmit = ( data: User ): void => {
     signin( data )
-      .then( ( res: UserDB ) => console.log(res.token))
-      .catch( ({ response }) => console.log(response.data.detail) );
+      .then( ( res: UserDB ) => console.log(res))
+      .catch( ({ response }) => console.log(response.data) );
   };
 
   return (
