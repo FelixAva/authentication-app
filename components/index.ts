@@ -17,5 +17,5 @@ export {
 
   // Shared folder exports
   Button,
-  ScreenLoading
+  ScreenLoading,
 }
