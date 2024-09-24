@@ -77,8 +77,7 @@ const useAuth = () => {
 
       return data;
     } catch ( error ) {
-      console.log(error);
-      console.log(userToken);
+      setError( error.response.data );
       setData( undefined );
     } finally {
       setLoading( false );
