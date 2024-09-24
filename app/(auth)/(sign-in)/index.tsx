@@ -1,5 +1,7 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
+import { ActivityIndicator } from 'react-native';
 
 import {
   Link,
@@ -9,10 +11,13 @@ import {
   ContentSafeArea
 } from '../../../components';
 
-import { signin } from '../../../api/authService';
+import { useAuth } from '../../../hooks';
+import {
+  User,
+  UserDBResponse as UserDB
+} from '../../../interfaces/user';
 
-import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
-import { ActivityIndicator } from 'react-native';
+import { Colors } from '../../../constants';
 
 export default function SignIn() {
 
@@ -27,10 +32,20 @@ export default function SignIn() {
     }
   });
 
-  const onSubmit = ( data: User ): void => {
-    signin( data )
-      .then( ( res: UserDB ) => console.log(res))
-      .catch( ({ response }) => console.log(response.data) );
+  const {
+    // Properties
+    loading: authLoading,
+    error,
+    data,
+
+    // Methods
+    signIn
+  } = useAuth();
+
+  const onSubmit = async ( user: User ): Promise<void> => {
+    const res = await signIn( user );
+
+    console.log('Logged in User:', res);
   };
 
   return (
@@ -95,7 +110,7 @@ export default function SignIn() {
         />
 
         {
-          false
+          authLoading
           ? <ActivityIndicator size='small' />
           : (
             <Button
@@ -106,6 +121,12 @@ export default function SignIn() {
               customStyles={{ width: 350 }}
             />
           )
+        }
+        {
+          error && <Text style={{ color: Colors.warning }}>Error: { error } </Text>
+        }
+        {
+          data && <Text style={{ color: Colors.success }}>Sign In successfull!</Text>
         }
 
       </FormContainer>

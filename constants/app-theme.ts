@@ -4,5 +4,6 @@ export const Colors = {
   black: '#000',
 
   warning: '#a93545',
-  accent: '#5149f584'
+  accent: '#5149f584',
+  success: '#00FF40'
 }

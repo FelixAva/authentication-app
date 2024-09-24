@@ -6,7 +6,7 @@ import { User, UserDBResponse as UserDB } from '../interfaces/user';
 const useAuth = () => {
 
   const [loading, setLoading] = useState<boolean>( false );
-  const [error, setError] = useState<string>();
+  const [error, setError] = useState<string>(undefined);
   const [data, setData] = useState<UserDB>();
 
   const signIn = async ( user: User ) => {
@@ -22,7 +22,7 @@ const useAuth = () => {
 
       return data;
     } catch ( error ) {
-      setError( error.response ? error.response.data : 'Network Error' );
+      setError( error.response ? error.response.data.detail : 'Network Error' );
     } finally {
       setLoading( false );
     }
