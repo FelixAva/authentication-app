@@ -30,6 +30,27 @@ const useAuth = () => {
     }
   };
 
+  const signUp = async ( user: User ) => {
+    setLoading( true );
+
+    try {
+      const { data } = await ApiManager.post('/auth/signup/', {
+        "username": user.userName,
+        "password": user.password
+      });
+
+      setData( data );
+      setError( undefined );
+
+      return data;
+    } catch ( error ) {
+      setError( error.response ? error.response.data.detail : 'Network Error' );
+      setData( undefined );
+    } finally {
+      setLoading( false );
+    }
+  }
+
   return {
     // Properties
     loading,
@@ -37,7 +58,8 @@ const useAuth = () => {
     data,
 
     // Methods
-    signIn
+    signIn,
+    signUp
   };
 };
 
