@@ -1,11 +1,15 @@
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import React, { useState, useEffect } from 'react';
 
 import { ScreenLoading } from '../../components';
 
+import useUserStore from '../../store/useStore';
+
 export default function AuthLayout() {
 
   const [isLoading, setIsLoading] = useState<boolean>( false );
+
+  const token = useUserStore( state => state.token );
 
   useEffect(() => {
     setIsLoading( true );
@@ -16,6 +20,8 @@ export default function AuthLayout() {
   }, [])
 
   if ( isLoading ) return <ScreenLoading />;
+
+  if ( token ) return <Redirect href='/(app)/' />
 
   return (
     <Stack
