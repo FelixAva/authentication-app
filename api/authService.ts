@@ -1,9 +1,6 @@
 import ApiManager from './ApiManager';
 
-interface User {
-  userName: string;
-  password: string;
-}
+import { User } from '../interfaces/user';
 
 export const signin = async ( user: User ) => {
   try {
