@@ -11,7 +11,7 @@ import {
 
 import { signin } from '../../../api/authService';
 
-import { User } from '../../../interfaces/user';
+import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
 
 export default function SignIn() {
 
@@ -27,7 +27,9 @@ export default function SignIn() {
   });
 
   const onSubmit = ( data: User ): void => {
-    console.log(signin( data ));
+    signin( data )
+      .then( ( res: UserDB ) => console.log(res.token))
+      .catch( ({ response }) => console.log(response.data.detail) );
   };
 
   return (
