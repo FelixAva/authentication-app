@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { Text, ActivityIndicator } from 'react-native';
 
 import {
   Button,
@@ -12,7 +13,7 @@ import {
 import { useAuth } from '../../../hooks';
 
 import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
-import { ActivityIndicator } from 'react-native';
+import { Colors } from '../../../constants/app-theme';
 
 export default function SignUp() {
 
@@ -39,8 +40,8 @@ export default function SignUp() {
     signUp
   } = useAuth();
 
-  const onSubmit = async ( data: User ) => {
-    const res = signUp( data );
+  const onSubmit = async ( user: User ): Promise<void> => {
+    const res = signUp( user );
 
     res && console.log(res);
   };
@@ -142,6 +143,12 @@ export default function SignUp() {
             />
         }
 
+        {
+          error && <Text style={{ color: Colors.warning, fontSize: 18 }}> Error: { error }</Text>
+        }
+        {
+          data && <Text style={{ color: Colors.success, fontSize: 18 }}>Sign Up successfull!</Text>
+        }
 
       </FormContainer>
 

@@ -44,7 +44,14 @@ const useAuth = () => {
 
       return data;
     } catch ( error ) {
-      setError( error.response ? error.response.data.detail : 'Network Error' );
+      if ( error.response.data.username ) {
+        setError( error.response.data.username );
+      } else if ( !error.response.data.username ) {
+        setError('Sign Up Successfull. Internal Error');
+      } else {
+        setError('Network Error');
+      }
+
       setData( undefined );
     } finally {
       setLoading( false );
