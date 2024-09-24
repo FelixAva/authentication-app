@@ -111,16 +111,14 @@ export default function SignIn() {
 
         {
           authLoading
-          ? <ActivityIndicator size='small' />
-          : (
-            <Button
+            ? <ActivityIndicator size='small' />
+            : <Button
               title='Sign In'
               action={
                 handleSubmit( ( data: User ) => onSubmit( data ) )
               }
               customStyles={{ width: 350 }}
             />
-          )
         }
         {
           error && <Text style={{ color: Colors.warning, fontSize: 18 }}>Error: { error } </Text>

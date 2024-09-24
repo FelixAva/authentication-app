@@ -12,6 +12,7 @@ import {
 import { useAuth } from '../../../hooks';
 
 import { User, UserDBResponse as UserDB } from '../../../interfaces/user';
+import { ActivityIndicator } from 'react-native';
 
 export default function SignUp() {
 
@@ -30,7 +31,7 @@ export default function SignUp() {
 
   const {
     // Properties
-    loading,
+    loading: authLoading,
     data,
     error,
 
@@ -41,7 +42,7 @@ export default function SignUp() {
   const onSubmit = async ( data: User ) => {
     const res = signUp( data );
 
-    console.log(res);
+    res && console.log(res);
   };
 
   return (
@@ -68,7 +69,7 @@ export default function SignUp() {
                 onBlur: onBlur,
                 value: value
               }}
-              error={ errors.userName?.message }
+              error={errors.userName?.message}
             />
           )}
           name='userName'
@@ -99,7 +100,7 @@ export default function SignUp() {
                 onBlur: onBlur,
                 value: value
               }}
-              error={ errors.password?.message }
+              error={errors.password?.message}
             />
           )}
           name='password'
@@ -108,8 +109,8 @@ export default function SignUp() {
         <Controller
           control={ control }
           rules={{
-            validate: ( val: string ) => {
-              if ( watch('password') != val ) {
+            validate: (val: string) => {
+              if (watch('password') != val) {
                 return 'The passwords do not match'
               }
             }
@@ -123,19 +124,25 @@ export default function SignUp() {
                 onBlur: onBlur,
                 value: value
               }}
-              error={ errors.confirmPassword?.message }
+              error={errors.confirmPassword?.message}
             />
           )}
           name='confirmPassword'
         />
 
-        <Button
-          title='Sign Up'
-          action={
-            handleSubmit( ( data: User ) => onSubmit( data ) )
-          }
-          customStyles={{ width: 350 }}
-        />
+        {
+          authLoading
+            ? <ActivityIndicator size='small' />
+            : <Button
+              title='Sign Up'
+              action={
+                handleSubmit( ( data: User ) => onSubmit( data ))
+              }
+              customStyles={{ width: 350 }}
+            />
+        }
+
+
       </FormContainer>
 
       <Link
