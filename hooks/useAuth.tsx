@@ -16,7 +16,8 @@ const useAuth = () => {
       const { data } = await ApiManager.post('/auth/login/', {
         "username": user.userName,
         "password": user.password
-      });
+      }
+    );
 
       setData( data );
       setError( undefined );
@@ -63,6 +64,7 @@ const useAuth = () => {
 
     try {
       const { data } = await ApiManager.post('/auth/logout/',
+        {},
         {
           headers: {
             "Authorization": `token ${ userToken }`
