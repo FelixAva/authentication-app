@@ -19,10 +19,12 @@ const useAuth = () => {
       });
 
       setData( data );
+      setError( undefined );
 
       return data;
     } catch ( error ) {
       setError( error.response ? error.response.data.detail : 'Network Error' );
+      setData( undefined );
     } finally {
       setLoading( false );
     }

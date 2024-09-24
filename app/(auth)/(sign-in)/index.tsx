@@ -45,7 +45,7 @@ export default function SignIn() {
   const onSubmit = async ( user: User ): Promise<void> => {
     const res = await signIn( user );
 
-    console.log('Logged in User:', res);
+    res && console.log('Logged in User:', res);
   };
 
   return (
