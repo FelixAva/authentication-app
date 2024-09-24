@@ -33,6 +33,7 @@ const useUserStore = create(
         user: user
       })),
       deleteUser: () => set(() => ({
+        token: undefined,
         user: undefined
       }))
     }),

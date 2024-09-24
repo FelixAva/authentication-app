@@ -65,7 +65,7 @@ const useAuth = () => {
       const { data } = await ApiManager.post('/auth/logout/',
         {
           headers: {
-            "authorization": `token ${ userToken }`
+            "Authorization": `token ${ userToken }`
           }
         }
       );
@@ -76,6 +76,7 @@ const useAuth = () => {
       return data;
     } catch ( error ) {
       console.log(error);
+      console.log(userToken);
       setData( undefined );
     } finally {
       setLoading( false );
@@ -90,7 +91,8 @@ const useAuth = () => {
 
     // Methods
     signIn,
-    signUp
+    signUp,
+    signOut
   };
 };
 
