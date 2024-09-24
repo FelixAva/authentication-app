@@ -58,6 +58,30 @@ const useAuth = () => {
     }
   }
 
+  const signOut = async ( userToken: string ) => {
+    setLoading( true );
+
+    try {
+      const { data } = await ApiManager.post('/auth/logout/',
+        {
+          headers: {
+            "authorization": `token ${ userToken }`
+          }
+        }
+      );
+
+      setData( data );
+      setError( undefined );
+
+      return data;
+    } catch ( error ) {
+      console.log(error);
+      setData( undefined );
+    } finally {
+      setLoading( false );
+    }
+  }
+
   return {
     // Properties
     loading,
