@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { User } from '../interfaces/user';
 
@@ -15,23 +16,31 @@ type Action = {
   deleteUser: () => void;
 }
 
-const useUserStore = create<State & Action>( (set) => ({
-  token: '',
-  user: undefined,
+const useUserStore = create(
+  persist<State & Action>(
+    (set) => ({
+      token: '',
+      user: undefined,
 
-  updateToken: ( token ) => set(() => ({
-    token: token
-  })),
-  deleteToken: () => set(() => ({
-    token: ''
-  })),
+      updateToken: ( token ) => set(() => ({
+        token: token
+      })),
+      deleteToken: () => set(() => ({
+        token: ''
+      })),
 
-  updateUser: ( user ) => set(() => ({
-    user: user
-  })),
-  deleteUser: () => set(() => ({
-    user: undefined
-  }))
-}));
+      updateUser: ( user ) => set(() => ({
+        user: user
+      })),
+      deleteUser: () => set(() => ({
+        user: undefined
+      }))
+    }),
+    {
+      name: 'user-storage',
+      storage: createJSONStorage(() => localStorage)
+    }
+  )
+);
 
 export default useUserStore;
