@@ -144,7 +144,7 @@ export default function SignUp() {
         }
 
         {
-          error && <Text style={{ color: Colors.warning, fontSize: 18 }}> Error: { error }</Text>
+          error && <Text style={{ color: Colors.warning, fontSize: 16 }}> Error: { error }</Text>
         }
         {
           data && <Text style={{ color: Colors.success, fontSize: 18 }}>Sign Up successfull!</Text>
