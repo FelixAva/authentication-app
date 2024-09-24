@@ -44,10 +44,8 @@ export default function SignIn() {
     signIn
   } = useAuth();
 
-  const {
-    updateToken,
-    updateUser
-  } = useUserStore();
+  const updateToken = useUserStore( state => state.updateToken );
+  const updateUser = useUserStore( state => state.updateUser );
 
   const storeUserData = ( user: UserDB ) => {
     updateToken( user.token );
