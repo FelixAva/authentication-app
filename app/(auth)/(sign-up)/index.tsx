@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Text, ActivityIndicator } from 'react-native';
 
@@ -41,9 +41,7 @@ export default function SignUp() {
   } = useAuth();
 
   const onSubmit = async ( user: User ): Promise<void> => {
-    const res = signUp( user );
-
-    res && console.log(res);
+    signUp( user );
   };
 
   return (
