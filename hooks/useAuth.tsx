@@ -47,7 +47,7 @@ const useAuth = () => {
       if ( error.response.data.username ) {
         setError( error.response.data.username );
       } else if ( !error.response.data.username ) {
-        setError('Sign Up Successfull. Internal Error');
+        setError('Internar Error. Sign Up successfull');
       } else {
         setError('Network Error');
       }
