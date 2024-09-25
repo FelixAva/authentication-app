@@ -14,7 +14,7 @@ const useAuth = () => {
 
     try {
       const { data } = await ApiManager.post('/auth/login/', {
-        "username": user.userName,
+        "username": user.username,
         "password": user.password
       }
     );
@@ -36,7 +36,7 @@ const useAuth = () => {
 
     try {
       const { data } = await ApiManager.post('/auth/signup/', {
-        "username": user.userName,
+        "username": user.username,
         "password": user.password
       });
 

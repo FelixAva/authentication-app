@@ -29,7 +29,7 @@ export default function SignIn() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      userName: "",
+      username: "",
       password: "",
     }
   });
@@ -50,6 +50,9 @@ export default function SignIn() {
   const storeUserData = ( user: UserDB ) => {
     updateToken( user.token );
     updateUser( user.user );
+
+    console.log(user.token);
+    console.log(user.user);
   }
 
   const onSubmit = async ( user: User ): Promise<void> => {
@@ -84,10 +87,10 @@ export default function SignIn() {
                 onChange: onChange,
                 value: value
               }}
-              error={ errors.userName?.message }
+              error={ errors.username?.message }
             />
           )}
-          name='userName'
+          name='username'
         />
 
         <Controller
