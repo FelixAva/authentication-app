@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 import { Button } from '../../components';
 
@@ -10,7 +10,10 @@ import { capitalize } from '../../helpers/capitalize';
 
 export default function Home() {
 
-  const { loading, signOut } = useAuth();
+  const {
+    loading: authLoading,
+    signOut
+  } = useAuth();
   const token = useUserStore( state => state.token );
   const user = useUserStore( state => state.user );
   const deleteUser = useUserStore( state => state.deleteUser );
@@ -23,10 +26,14 @@ export default function Home() {
   return (
     <View style={ styles.container }>
       <Text style={ styles.helloMessage }>Welcome { capitalize( user.username ) }</Text>
-      <Button
-        title='Sign Out'
-        action={ () => onSignOut() }
-      />
+      {
+        authLoading
+          ? <ActivityIndicator size='small' />
+          : <Button
+            title='Sign Out'
+            action={ () => onSignOut() }
+          />
+      }
     </View>
   );
 }
