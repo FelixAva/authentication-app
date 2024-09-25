@@ -59,14 +59,13 @@ export default function SignUp() {
               message: 'Max length is 12'
             }
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <InputText
               label='User'
               inputProps={{
                 placeholder: 'Type an user name',
                 onChange: onChange,
                 onBlur: onBlur,
-                value: value
               }}
               error={errors.username?.message}
             />
@@ -90,14 +89,13 @@ export default function SignUp() {
               message: 'Max length is 12'
             }
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <InputText
               label='Password'
               inputProps={{
                 placeholder: 'Type your password',
                 onChange: onChange,
                 onBlur: onBlur,
-                value: value
               }}
               error={errors.password?.message}
             />
@@ -114,14 +112,13 @@ export default function SignUp() {
               }
             }
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <InputText
               label='Confirm password'
               inputProps={{
                 placeholder: 'Type your password again',
                 onChange: onChange,
                 onBlur: onBlur,
-                value: value
               }}
               error={errors.confirmPassword?.message}
             />

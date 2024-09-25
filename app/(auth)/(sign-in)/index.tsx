@@ -78,14 +78,13 @@ export default function SignIn() {
               message: 'Max length is 12'
             }
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <InputText
               label='User'
               inputProps={{
                 placeholder: 'Type your user name',
                 onBlur: onBlur,
                 onChange: onChange,
-                value: value
               }}
               error={ errors.username?.message }
             />
@@ -109,14 +108,13 @@ export default function SignIn() {
               message: 'Max length is 12'
             }
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <InputText
               label='Password'
               inputProps={{
                 placeholder: 'Type your password',
                 onBlur: onBlur,
                 onChange: onChange,
-                value: value
               }}
               error={ errors.password?.message }
             />
