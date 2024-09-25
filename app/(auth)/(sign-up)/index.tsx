@@ -64,7 +64,7 @@ export default function SignUp() {
               label='User'
               inputProps={{
                 placeholder: 'Type an user name',
-                onChange: onChange,
+                onChangeText: onChange,
                 onBlur: onBlur,
               }}
               error={errors.username?.message}
@@ -94,7 +94,7 @@ export default function SignUp() {
               label='Password'
               inputProps={{
                 placeholder: 'Type your password',
-                onChange: onChange,
+                onChangeText: onChange,
                 onBlur: onBlur,
               }}
               error={errors.password?.message}
@@ -117,7 +117,7 @@ export default function SignUp() {
               label='Confirm password'
               inputProps={{
                 placeholder: 'Type your password again',
-                onChange: onChange,
+                onChangeText: onChange,
                 onBlur: onBlur,
               }}
               error={errors.confirmPassword?.message}
