@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   helloMessage: {
-    fontSize: 22
+    fontSize: 30,
+    marginBottom: 25
   }
 });
