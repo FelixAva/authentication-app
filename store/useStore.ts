@@ -10,8 +10,6 @@ type State = {
 
 type Action = {
   updateToken: ( token: State['token'] ) => void;
-  deleteToken: () => void;
-
   updateUser: ( user: State['user'] ) => void;
   deleteUser: () => void;
 }
@@ -25,10 +23,6 @@ const useUserStore = create(
       updateToken: ( token ) => set(() => ({
         token: token
       })),
-      deleteToken: () => set(() => ({
-        token: ''
-      })),
-
       updateUser: ( user ) => set(() => ({
         user: user
       })),
