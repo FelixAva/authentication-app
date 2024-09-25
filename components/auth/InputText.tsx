@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TextInputProps, StyleSheet } from 'react-native';
 
 import { Colors } from '../../constants';
+import { capitalize } from '../../helpers/capitalize';
 
 interface Props {
   label: string;
@@ -18,8 +19,6 @@ export default function InputText( {
 
   inputProps
 }: Props ) {
-
-  const capitalize = ( text: string ): string => text[0].toUpperCase() + text.substring(1);
 
   return (
     <View style={{ gap: 10 }}>
