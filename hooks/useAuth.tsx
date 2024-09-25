@@ -13,11 +13,7 @@ const useAuth = () => {
     setLoading( true );
 
     try {
-      const { data } = await ApiManager.post('/auth/login/', {
-        "username": user.username,
-        "password": user.password
-      }
-    );
+      const { data } = await ApiManager.post('/auth/login/', user);
 
       setData( data );
       setError( undefined );
@@ -35,10 +31,7 @@ const useAuth = () => {
     setLoading( true );
 
     try {
-      const { data } = await ApiManager.post('/auth/signup/', {
-        "username": user.username,
-        "password": user.password
-      });
+      const { data } = await ApiManager.post('/auth/signup/', user);
 
       setData( data );
       setError( undefined );

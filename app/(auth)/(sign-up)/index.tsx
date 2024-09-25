@@ -24,7 +24,7 @@ export default function SignUp() {
     formState: { errors }
   } = useForm({
     defaultValues: {
-      userName: '',
+      username: '',
       password: '',
       confirmPassword: '',
     }
@@ -68,10 +68,10 @@ export default function SignUp() {
                 onBlur: onBlur,
                 value: value
               }}
-              error={errors.userName?.message}
+              error={errors.username?.message}
             />
           )}
-          name='userName'
+          name='username'
         />
 
         <Controller
