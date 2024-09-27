@@ -8,6 +8,7 @@ interface Props {
   label: string;
   error?: string;
   required?: boolean;
+  isPasswordInput?: boolean;
 
   inputProps: TextInputProps;
 }
@@ -16,6 +17,7 @@ export default function InputText( {
   label,
   error,
   required,
+  isPasswordInput,
 
   inputProps
 }: Props ) {
@@ -31,6 +33,7 @@ export default function InputText( {
       <TextInput
         { ...inputProps }
         style={ styles.input }
+        secureTextEntry={ isPasswordInput }
       />
 
       {

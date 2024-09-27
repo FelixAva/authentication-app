@@ -97,6 +97,7 @@ export default function SignUp() {
                 onChangeText: onChange,
                 onBlur: onBlur,
               }}
+              isPasswordInput
               error={errors.password?.message}
             />
           )}
@@ -120,6 +121,7 @@ export default function SignUp() {
                 onChangeText: onChange,
                 onBlur: onBlur,
               }}
+              isPasswordInput
               error={errors.confirmPassword?.message}
             />
           )}

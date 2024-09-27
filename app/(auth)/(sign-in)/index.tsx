@@ -117,6 +117,7 @@ export default function SignIn() {
                 onChangeText: onChange,
                 value: value
               }}
+              isPasswordInput
               error={ errors.password?.message }
             />
           )}
