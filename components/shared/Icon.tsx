@@ -3,7 +3,7 @@ import IonIcons from '@expo/vector-icons/Ionicons'; // Icon library import. IONI
 import { View, Text } from 'react-native';
 
 interface Props {
-  name: any;
+  name: keyof typeof IonIcons.glyphMap;
   size?: number;
   color?: string;
 }
