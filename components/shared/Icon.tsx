@@ -4,8 +4,8 @@ import { View, Text } from 'react-native';
 
 interface Props {
   name: any;
-  size: number;
-  color: string;
+  size?: number;
+  color?: string;
 }
 
 export default function ComponentScreen({
@@ -14,12 +14,11 @@ export default function ComponentScreen({
   color = 'black'
 }: Props ) {
   return (
-    <>
       <IonIcons
+        style={{ width: size }}
         name={ name }
         size={ size }
         color={ color }
       />
-    </>
   );
 }

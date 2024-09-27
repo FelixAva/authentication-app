@@ -7,6 +7,7 @@ import ContentSafeArea from './auth/ContentSafeArea';
 // Shared folder imports
 import Button from './shared/Button';
 import ScreenLoading from './shared/ScreenLoading';
+import Icon from './shared/Icon';
 
 export {
   // Auth folder exports
@@ -18,4 +19,5 @@ export {
   // Shared folder exports
   Button,
   ScreenLoading,
+  Icon
 }

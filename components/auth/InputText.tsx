@@ -1,8 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput, TextInputProps, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TextInputProps,
+  StyleSheet,
+  Pressable
+} from 'react-native';
 
 import { Colors } from '../../constants';
 import { capitalize } from '../../helpers/capitalize';
+import { Icon } from '..';
 
 interface Props {
   label: string;
@@ -30,11 +38,23 @@ export default function InputText( {
         { label } { required && '*'  }
       </Text>
 
-      <TextInput
-        { ...inputProps }
-        style={ styles.input }
-        secureTextEntry={ isPasswordInput }
-      />
+      <View style={ styles.inputGroup }>
+        <TextInput
+          { ...inputProps }
+          style={ styles.input }
+          secureTextEntry={ isPasswordInput }
+        />
+
+        {
+          isPasswordInput &&
+            <Pressable
+              onPress={ () => console.log('Show password') }
+              style={ styles.icon }
+            >
+              <Icon name='eye' />
+            </Pressable>
+        }
+      </View>
 
       {
         error &&
@@ -64,5 +84,16 @@ const styles = StyleSheet.create({
   error: {
     fontSize: 16,
     color: Colors.warning
+  },
+  inputGroup: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  icon: {
+    width: 25,
+    right: 15,
+
+    position: 'absolute',
+    alignSelf: 'center'
   }
 });
