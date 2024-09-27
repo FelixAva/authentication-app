@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -30,6 +30,8 @@ export default function InputText( {
   inputProps
 }: Props ) {
 
+  const [isPwdHidden, setIsPwdHidden] = useState<boolean>( true );
+
   return (
     <View style={{ gap: 10 }}>
       <Text
@@ -38,20 +40,20 @@ export default function InputText( {
         { label } { required && '*'  }
       </Text>
 
-      <View style={ styles.inputGroup }>
+      <View style={ isPasswordInput && styles.inputGroup }>
         <TextInput
           { ...inputProps }
           style={ styles.input }
-          secureTextEntry={ isPasswordInput }
+          secureTextEntry={ isPwdHidden }
         />
 
         {
           isPasswordInput &&
             <Pressable
-              onPress={ () => console.log('Show password') }
+              onPress={ () => setIsPwdHidden( !isPwdHidden ) }
               style={ styles.icon }
             >
-              <Icon name='eye' />
+              <Icon name={ isPwdHidden ? 'eye' : 'eye-off'} />
             </Pressable>
         }
       </View>
