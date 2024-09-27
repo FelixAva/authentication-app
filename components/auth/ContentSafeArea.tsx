@@ -30,7 +30,7 @@ export default function ContentSafeArea( { children }: Props ) {
         onPress={ Platform.OS === 'web' ? null : Keyboard.dismiss }
       >
         <ScrollView
-          contentContainerStyle={[ styles.content, isKbordActive ? { flex: 0 } : { flex: 1 } ]}
+          contentContainerStyle={[ isKbordActive ? styles.content_keyboardOn : styles.content_keyboardOff, Platform.OS === 'web' && { gap: 40 } ]}
         >
           {
             children
@@ -46,8 +46,14 @@ const styles = StyleSheet.create({
     ...globalStyles.container,
     alignItems: 'center',
   },
-  content: {
+  content_keyboardOff: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-evenly',
+  },
+  content_keyboardOn: {
+    flex: 0,
+    alignItems: 'center',
+    gap: 40
   }
 });
