@@ -16,7 +16,7 @@
 ```
 git clone https://github.com/FelixAva/authentication-app.git
 ```
-***2. Open the repository's folder:**
+**2. Open the repository's folder:**
 ```
 cd authentication-app
 ```
