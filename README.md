@@ -8,10 +8,14 @@
 4. ### Badges
 
 ## Description
-**ESP:** La "autenthication app" es una aplicación es un proyecto que permite hacer un **inicio de sesión**, **registro** y un **cierre de sesión**.
+**ESP:** La "autenthication app" es un proyecto para crear una aplicacion de autenticacion de usuarios, implementando librerias para su funcionamiento optimo.
 
 ## How to install and run
 
+**NOTE: This app not includes the backend serv. To use the app with a backend, you must have to use the following repo:**
+```
+https://github.com/hanzeelvilla/expense-tracker-api
+```
 **1. Clone the repository:**
 ```
 git clone https://github.com/FelixAva/authentication-app.git
