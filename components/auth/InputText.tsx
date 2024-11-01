@@ -44,7 +44,7 @@ export default function InputText( {
         <TextInput
           { ...inputProps }
           style={ styles.input }
-          secureTextEntry={ isPwdHidden }
+          secureTextEntry={ isPwdHidden && isPasswordInput }
         />
 
         {
